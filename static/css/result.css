@@ -1,6 +1,11 @@
-.content {
+.main .content {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.result img { 
+    max-width: 80vw;
+    max-height: 45vh;
 }

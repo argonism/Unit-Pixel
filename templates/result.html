@@ -1,7 +1,13 @@
 {% extends "layout.html" %}
-{% block content %}
 
-<h3>生成結果</h3>
-<img src="{{result_path}}" />
+{% block header %}
+<link href="/static/css/result.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h3>生成結果</h3>
+    <img src="{{result_path}}" />
+</div>
 
 {% endblock %}

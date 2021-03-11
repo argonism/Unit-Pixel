@@ -4,10 +4,31 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/css/layout.css" rel="stylesheet">
     <title>Pixelation Sample</title>
+    {% block header %}
+    {% endblock %}
   </head>
-  <h1>Pixelation Sample</h1>
   <body>
-    {% block content %}{% endblock %}
+    <header>
+      <img class="logo" src="/static/images/logo.png"/>
+      <a href="/"><img class="title" src="/static/images/pixelation_demo.png"/></a> 
+    </header>
+    <div class="section main">
+      <form action="/pixelation" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/png, image/jpeg, image/jpg">
+        <button type="submit">submit</button>
+      </form>
+      {% block content %}{% endblock %}
+    </div>
+    <div class="section description">
+      <div class="title">使い方</div>
+      <div class="content">
+        <p>画像ファイルを選択し、submitボタンを押すとモデルの出力結果が表示されます。</p>
+      </div>
+      <div class="section gallery">
+        
+      </div>
+    </div>
   </body>
 </html>

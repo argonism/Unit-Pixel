@@ -1,0 +1,45 @@
+body {
+    margin: auto;
+    width: 80vw;
+}
+
+body > header {
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+
+header .title { 
+    width: 300px;
+}
+
+header .logo {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.main {
+    margin: auto;
+    height: 60vh;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.description .title {
+    border-bottom: 1px solid #ddd;
+    font-size: 1.2em;
+}
+
+.description .content {
+    width: 90%;
+    margin: auto;
+}

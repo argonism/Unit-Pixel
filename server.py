@@ -45,7 +45,7 @@ def pixelation():
 
         image_rgb = image_pil.convert("RGB")
         result_filename = model.convert_image(image_rgb)
-        return redirect(url_for('result', img=result_filename))
+        return redirect(url_for('result', filename=result_filename))
 
     return redirect(url_for('index'))
 

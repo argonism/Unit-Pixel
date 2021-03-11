@@ -35,7 +35,7 @@ import torch
 
 from PIL import Image
 
-SAVE_IMG_DIR = "static/images"
+SAVE_IMG_DIR = "static/tmp"
 
 class Face2Pixel:
     def __init__(self, model_ver=200,ataset_name="illust2pixel", channels=3, img_height=256, img_width=256, dim=64, n_downsample=2):
@@ -88,4 +88,4 @@ class Face2Pixel:
         unique_filename = str(uuid.uuid4())
         output_path = f"{SAVE_IMG_DIR}/{unique_filename}.png"
         save_image(fake_X2, output_path, normalize=True)
-        return output_path
+        return unique_filename

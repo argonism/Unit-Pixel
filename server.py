@@ -4,6 +4,7 @@ import os
 import string
 from PIL import Image
 from face2pixel import Face2Pixel
+import pyheif
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_DIR = "static"
@@ -35,10 +36,30 @@ def resize_length(img, length):
 def index():
     return render_template(source_dir('index.html'))
 
+def image_to_pil(file_storage):
+    splited_mimetype = file_storage.mimetype.split('/')
+    if not splited_mimetype[0] == 'image':
+        return
+
+    if splited_mimetype[1] == 'heic':
+        heif_file = pyheif.read(file_storage)
+        image = Image.frombytes(
+            heif_file.mode, 
+            heif_file.size, 
+            heif_file.data,
+            "raw",
+            heif_file.mode,
+            heif_file.stride,
+            )
+        return image
+    return Image.open(file_storage)
+
 @app.route('/pixelation', methods=['POST'])
 def pixelation():
     if request.files['image']:
-        image_pil = Image.open(request.files['image'])
+        in_img = request.files['image']
+        image_pil = image_to_pil(in_img)
+         
         if image_pil.width > 1000 or image_pil.height > 1000:
             image_pil = resize_length(image_pil, 1000)
             print(f"resized: {image_pil.width}, {image_pil.height}")

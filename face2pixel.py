@@ -85,7 +85,7 @@ class Face2Pixel:
         X1 = Variable(img.type(self.Tensor))
         _, Z1 = self.E1(X1.unsqueeze(0))
         fake_X2 = self.G2(Z1)
-        unique_filename = str(uuid.uuid4())
-        output_path = f"{SAVE_IMG_DIR}/{unique_filename}.png"
+        unique_filename = f"{str(uuid.uuid4())}.png"
+        output_path = f"{SAVE_IMG_DIR}/{unique_filename}"
         save_image(fake_X2, output_path, normalize=True)
-        return unique_filename
+        return unique_filename 

@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/static/css/layout.css" rel="stylesheet">
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <script src="/static/js/ajax.js"></script>
     <title>Pixelation Sample</title>
     {% block header %}
     {% endblock %}
@@ -15,11 +17,16 @@
       <a href="/"><img class="title" src="/static/images/pixelation_demo.png"/></a> 
     </header>
     <div class="section main">
-      <form action="/pixelation" method="post" enctype="multipart/form-data">
+      <div class="form">
         <input type="file" name="image" accept="image/png, image/jpeg, image/jpg, image/heic">
         <button type="submit">submit</button>
-      </form>
-      {% block content %}{% endblock %}
+      </div>
+        {% block content %}{% endblock %}
+      <div class="anim">
+        <div class="fulfilling-square-spinner">
+          <div class="spinner-inner"></div>
+        </div>
+      </div>
     </div>
     <div class="section description">
       <div class="title">使い方</div>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory, jsonify
 import numpy as np
 import os
 import string
@@ -37,14 +37,10 @@ def pixelation():
 
         image_rgb = image_pil.convert("RGB")
         result_filename = model.convert_image(image_rgb)
-        return redirect(url_for('result', filename=result_filename))
+        return jsonify({"filename": result_filename})
+        # return redirect(url_for('result', filename=result_filename))
 
     return redirect(url_for('index'))
-
-@app.route('/result/<filename>')
-def result(filename):
-    result_path = f"/{STATIC_DIR}/{RESULT_DIR}/{filename}.png"
-    return render_template(source_dir('result.html'), title='生成結果', result_path=result_path)
 
 if __name__ == '__main__':
     load_model()

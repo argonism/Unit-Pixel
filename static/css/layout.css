@@ -26,9 +26,30 @@ header .logo {
 .main {
     margin: auto;
     height: 60vh;
+    position: relative;
 }
 
-form {
+.main .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.result { 
+    max-width: 80vw;
+    max-height: 45vh;
+}
+
+.anim {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.form {
     display: flex;
     justify-content: center;
     align-items: center;
